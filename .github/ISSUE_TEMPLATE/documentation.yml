@@ -1,0 +1,22 @@
+name: Documentation
+description: 문서의 문제나 개선 사항을 알려주세요.
+title: "[Docs]: "
+labels: [documentation]
+body:
+  - type: input
+    id: document
+    attributes: {label: 대상 문서}
+    validations: {required: true}
+  - type: textarea
+    id: problem
+    attributes: {label: 문제점}
+    validations: {required: true}
+  - type: textarea
+    id: proposed_change
+    attributes: {label: 제안 변경}
+  - type: input
+    id: repository
+    attributes: {label: 관련 Repository}
+  - type: textarea
+    id: additional
+    attributes: {label: 추가 정보}

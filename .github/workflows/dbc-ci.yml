@@ -1,0 +1,19 @@
+name: DBC CI
+on:
+  workflow_call:
+    inputs:
+      validation-command: {type: string, default: ''}
+      working-directory: {type: string, default: '.'}
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ inputs.working-directory }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: DBC 파일 존재 확인
+        run: test -n "$(git ls-files '*.dbc')"
+      - name: Repository validation 실행
+        if: ${{ inputs.validation-command != '' }}
+        run: ${{ inputs.validation-command }}

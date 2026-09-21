@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 보안 취약점 신고
+    url: https://github.com/oas-ai/.github/security/policy
+    about: Safety, CAN injection, 인증 우회, 원격 차량 제어 취약점은 Public Issue로 작성하지 마세요.
+  - name: 일반 질문 및 아이디어
+    url: https://github.com/orgs/oas-ai/discussions
+    about: 일반적인 질문과 아이디어는 GitHub Discussions 사용을 권장합니다.

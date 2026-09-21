@@ -1,0 +1,55 @@
+name: Vehicle port request
+description: 차량 플랫폼 지원 요청 또는 포팅 정보를 등록합니다.
+title: "[Vehicle]: "
+labels: [vehicle-port]
+body:
+  - type: input
+    id: manufacturer
+    attributes: {label: Manufacturer}
+    validations: {required: true}
+  - type: input
+    id: model
+    attributes: {label: Model}
+    validations: {required: true}
+  - type: input
+    id: platform
+    attributes: {label: Platform code, placeholder: "예: RG3"}
+    validations: {required: true}
+  - type: input
+    id: model_year
+    attributes: {label: Model year}
+  - type: input
+    id: region
+    attributes: {label: Region}
+  - type: input
+    id: powertrain
+    attributes: {label: Powertrain}
+  - type: checkboxes
+    id: interfaces
+    attributes:
+      label: CAN 지원
+      options:
+        - label: CAN 지원 여부를 확인했습니다.
+        - label: CAN FD 지원 여부를 확인했습니다.
+  - type: checkboxes
+    id: adas
+    attributes:
+      label: ADAS 및 센서
+      options:
+        - label: ACC
+        - label: LKAS
+        - label: HDA
+        - label: HDA2
+        - label: Radar
+  - type: checkboxes
+    id: resources
+    attributes:
+      label: 보유 자료
+      options:
+        - label: 접근 가능한 Hardware가 있습니다.
+        - label: CAN Log를 확보했습니다.
+        - label: DBC를 확보했습니다.
+        - label: 기존 Reference Implementation이 있습니다.
+  - type: textarea
+    id: details
+    attributes: {label: 추가 정보, description: 민감한 CAN frame, 보안 우회 정보는 공개하지 마세요.}

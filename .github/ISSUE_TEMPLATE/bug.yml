@@ -1,0 +1,40 @@
+name: Bug report
+description: 재현 가능한 문제를 알려주세요.
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: textarea
+    id: description
+    attributes: {label: 문제 설명, description: 발생한 문제를 간결하게 설명해 주세요.}
+    validations: {required: true}
+  - type: textarea
+    id: reproduce
+    attributes: {label: 재현 방법, description: 재현 가능한 순서와 입력을 작성해 주세요.}
+    validations: {required: true}
+  - type: textarea
+    id: expected
+    attributes: {label: 기대 동작}
+    validations: {required: true}
+  - type: textarea
+    id: actual
+    attributes: {label: 실제 동작}
+    validations: {required: true}
+  - type: input
+    id: component
+    attributes: {label: Repository 또는 Component, placeholder: "예: can / parser"}
+    validations: {required: true}
+  - type: input
+    id: environment
+    attributes: {label: OS 및 환경, placeholder: "예: Ubuntu 24.04, Python 3.12"}
+  - type: input
+    id: version
+    attributes: {label: 버전, placeholder: "예: v0.3.1 또는 commit SHA"}
+  - type: input
+    id: vehicle
+    attributes: {label: 관련 차량, placeholder: "예: Genesis G80 RG3"}
+  - type: textarea
+    id: logs
+    attributes: {label: 로그, description: 민감한 정보와 보안 취약점 세부 내용은 제외해 주세요., render: shell}
+  - type: textarea
+    id: additional
+    attributes: {label: 추가 정보}

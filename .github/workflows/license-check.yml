@@ -1,0 +1,19 @@
+name: License check
+on:
+  workflow_call:
+    inputs:
+      working-directory: {type: string, default: '.'}
+      header-check-command: {type: string, default: ''}
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ inputs.working-directory }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: LICENSE 확인
+        run: test -f LICENSE || test -f LICENSE.txt || test -f LICENSE.md
+      - name: Source header 확인
+        if: ${{ inputs.header-check-command != '' }}
+        run: ${{ inputs.header-check-command }}

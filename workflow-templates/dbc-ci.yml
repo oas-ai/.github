@@ -1,0 +1,10 @@
+name: DBC CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  ci:
+    uses: oas-ai/.github/.github/workflows/dbc-ci.yml@main
+# validation-command는 DBC validator가 도입된 뒤 호출 저장소에서 지정하세요.
+# 안정화 후 @main 대신 @v1 같은 stable tag를 사용하세요.

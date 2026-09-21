@@ -1,0 +1,27 @@
+name: C and C++ CI
+on:
+  workflow_call:
+    inputs:
+      source-directory: {type: string, default: '.'}
+      build-directory: {type: string, default: build}
+      cmake-arguments: {type: string, default: ''}
+      run-tests: {type: boolean, default: true}
+      enable-clang-tidy: {type: boolean, default: false}
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: clang-format 확인
+        working-directory: ${{ inputs.source-directory }}
+        run: git ls-files '*.[ch]' '*.[ch]pp' '*.cc' '*.cpp' '*.cxx' '*.hh' '*.hpp' | xargs -r clang-format --dry-run --Werror
+      - name: Configure
+        run: cmake -S '${{ inputs.source-directory }}' -B '${{ inputs.build-directory }}' -G Ninja ${{ inputs.cmake-arguments }}
+      - name: Build
+        run: cmake --build '${{ inputs.build-directory }}' --parallel
+      - name: clang-tidy
+        if: ${{ inputs.enable-clang-tidy }}
+        run: cmake --build '${{ inputs.build-directory }}' --target clang-tidy
+      - name: Test
+        if: ${{ inputs.run-tests }}
+        run: ctest --test-dir '${{ inputs.build-directory }}' --output-on-failure
