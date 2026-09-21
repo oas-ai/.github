@@ -3,6 +3,7 @@ on:
   workflow_call:
     inputs:
       working-directory: {type: string, default: '.'}
+      enable-breaking-check: {type: boolean, default: false}
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -12,6 +13,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: bufbuild/buf-setup-action@v1
+      - name: Buf format
+        run: buf format -d --exit-code
       - name: Buf lint
         run: |
           if find . -name '*.proto' -print -quit | grep -q .; then
@@ -19,3 +22,6 @@ jobs:
           else
             echo 'No Protocol Buffers schema yet; skipping lint.'
           fi
+      - name: Buf breaking
+        if: ${{ inputs.enable-breaking-check && github.event_name == 'pull_request' }}
+        run: buf breaking --against "${{ github.event.repository.clone_url }}#branch=${{ github.event.pull_request.base.ref }}"
