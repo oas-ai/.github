@@ -1,0 +1,9 @@
+name: Protocol Buffers CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  ci:
+    uses: oas-ai/.github/.github/workflows/protobuf-ci.yml@main
+# 안정화 후 @main 대신 @v1 같은 stable tag를 사용하세요.

@@ -12,8 +12,13 @@ jobs:
         working-directory: ${{ inputs.working-directory }}
     steps:
       - uses: actions/checkout@v4
-      - name: DBC 파일 존재 확인
-        run: test -n "$(git ls-files '*.dbc')"
+      - name: DBC 파일 목록 확인
+        run: |
+          if git ls-files '*.dbc' | grep -q .; then
+            git ls-files '*.dbc'
+          else
+            echo 'No DBC files yet; skipping DBC-specific validation.'
+          fi
       - name: Repository validation 실행
         if: ${{ inputs.validation-command != '' }}
         run: ${{ inputs.validation-command }}

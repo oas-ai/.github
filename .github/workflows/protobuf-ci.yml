@@ -1,0 +1,21 @@
+name: Protocol Buffers CI
+on:
+  workflow_call:
+    inputs:
+      working-directory: {type: string, default: '.'}
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ inputs.working-directory }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: bufbuild/buf-setup-action@v1
+      - name: Buf lint
+        run: |
+          if find . -name '*.proto' -print -quit | grep -q .; then
+            buf lint
+          else
+            echo 'No Protocol Buffers schema yet; skipping lint.'
+          fi
