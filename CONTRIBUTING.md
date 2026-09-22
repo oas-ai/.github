@@ -16,7 +16,7 @@ OAS 기여에 관심을 가져주셔서 감사합니다. 문서, 테스트, 버�
 feature branch → Pull Request → CI → Review → Squash Merge → main
 ```
 
-branch는 `feat/`, `fix/`, `refactor/`, `docs/`, `test/`, `chore/` prefix를 사용합니다. 예: `feat/genesis-rg3`, `fix/rg3-wheel-speed`.
+branch는 `feat/`, `fix/`, `refactor/`, `docs/`, `test/`, `chore/` prefix를 사용합니다. 예: `feat/palisade-2020`, `fix/palisade-wheel-speed`.
 
 Commit은 Conventional Commits 형식을 사용합니다.
 
@@ -40,6 +40,6 @@ Breaking Change는 영향 범위, migration 방법, 버전 변경 계획을 Pull
 
 차량 상태 읽기, CAN/CAN FD, Gateway, Vehicle Control 또는 Safety에 영향을 주는 변경은 대상 Platform과 capability를 명시하고 안전 영향을 검토해야 합니다. Application이 Raw CAN TX를 직접 수행하는 구조를 추가하지 마세요. 기본 제어 경로는 `Application → VehicleControl → SafetyModel → Manufacturer Controller → CAN TX`입니다.
 
-Platform ID는 `MANUFACTURER_PLATFORM` 형식(예: `GENESIS_RG3`)을 사용하며, 연식·트림·ADAS 옵션은 capability metadata로 관리합니다. 내부 계산은 SI 단위를 기본으로 하고, OEM CAN signal은 DBC, parser, manufacturer adapter를 거쳐 Canonical Model로 변환합니다.
+Platform ID는 `MANUFACTURER_PLATFORM` 형식(예: `HYUNDAI_PALISADE`)을 사용하며, 연식·트림·ADAS 옵션은 capability metadata로 관리합니다. 내부 계산은 SI 단위를 기본으로 하고, OEM CAN signal은 DBC, parser, manufacturer adapter를 거쳐 Canonical Model로 변환합니다.
 
 상세 Coding Convention은 향후 `oas-ai/docs/engineering/`에서 관리합니다.

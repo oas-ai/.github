@@ -5,7 +5,7 @@
 
 ## Vehicle data
 
-- Genesis G80 DBC raw catalog: body, seatbelt, wiper, climate, diagnostics
+- Hyundai Palisade 2020 DBC raw catalog: body, seatbelt, wiper, climate, diagnostics
 - Raw signal의 HMI Diagnostics 조회
 - 실차 CAN capture 기반 signal enum 승인
 - 승인된 신호의 canonical `VehicleState` 승격
