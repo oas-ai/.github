@@ -12,6 +12,7 @@ OAS는 Hardware, Transport, Protocol/CAN, Vehicle Adapter, Canonical Vehicle Mod
 ## 주요 저장소
 
 - [ohayessOS](https://github.com/oas-ai/ohayessOS): 차량 소프트웨어
+- [meta-oas](https://github.com/oas-ai/meta-oas): Yocto layer와 재현 가능한 AVN 이미지 manifest
 - [dbc](https://github.com/oas-ai/dbc): 차량 CAN database 정의
 - [can](https://github.com/oas-ai/can): CAN 처리 라이브러리
 - [car](https://github.com/oas-ai/car): 차량 Adapter와 Canonical Model
@@ -30,7 +31,7 @@ OAS는 Hardware, Transport, Protocol/CAN, Vehicle Adapter, Canonical Vehicle Mod
    조회할 수 있게 합니다.
 3. **실차 신호 승인** — Canable 수신 로그로 Palisade 2020 연식·시장·트림을 확인하고 enum 의미를
    검증한 신호만 canonical state로 승격합니다.
-4. **실차 Linux 통합** — Radxa에서 SocketCAN, systemd supervisor, kiosk/WebView, 부팅·절전·재연결을 검증합니다.
+4. **실차 Linux 통합** — `meta-oas` 기반 Radxa 이미지에서 SocketCAN, systemd supervisor, kiosk/WebView, 부팅·절전·재연결을 검증합니다.
 5. **회귀 데이터** — 익명화한 최소 CAN fixture를 decoder·gateway·runtime·HMI E2E에 추가합니다.
 6. **차량 제어 준비** — 제어 API는 Safety boundary, 위험 분석, 권한 분리, 실차 검증이 완료된
    뒤에만 별도 단계로 설계합니다. 조향·제동·구동 제어는 현재 범위에 포함하지 않습니다.

@@ -13,6 +13,7 @@
 
 ## Target hardware
 
+- `meta-oas` QEMU smoke image 유지, Radxa ROCK 5C vendor BSP revision 고정
 - Radxa Linux image와 SocketCAN interface 구성
 - gateway/runtime/HMI systemd supervisor 배포
 - kiosk/WebView 부팅·절전·gateway 재연결 검증
